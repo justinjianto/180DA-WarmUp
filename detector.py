@@ -22,9 +22,6 @@ while 1:
     if len(contours) > 0:
         max_contour = max(contours, key = cv2.contourArea)
 
-        # rect = cv2.minAreaRect(max_contour)
-        # box = cv2.boxPoints(rect)
-        # box = np.int0(box)
         (x, y, w, h) = cv2.boundingRect(max_contour)
         box = [x,y, x+w,y+h]
         cv2.rectangle(frame, (x,y+h), (x+w,y), (255, 0, 0), 2)
@@ -32,8 +29,7 @@ while 1:
         cv2.imshow('frame',frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-    # this function will be triggered when the ESC key is pressed
-    # and the while loop will terminate and so will the program
+
 cap.release()
  
 cv2.destroyAllWindows()
