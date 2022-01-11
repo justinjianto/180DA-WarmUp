@@ -24,7 +24,7 @@ while 1:
 
         (x, y, w, h) = cv2.boundingRect(max_contour)
         box = [x,y, x+w,y+h]
-        cv2.rectangle(frame, (x,y+h), (x+w,y), (255, 0, 0), 2)
+        cv2.rectangle(frame, (x,y), (x+w,y+h), (255, 0, 0), 2)
 
         cv2.imshow('frame',frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
