@@ -1,4 +1,11 @@
 
+"""
+Justin Jianto
+Sources:
+https://stackoverflow.com/questions/40203932/drawing-a-rectangle-around-all-contours-in-opencv-python
+https://docs.opencv.org/3.4/da/d97/tutorial_threshold_inRange.html
+
+"""
 import cv2
 import numpy as np
  
