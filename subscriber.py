@@ -21,7 +21,7 @@ def on_disconnect(client, userdata, rc):
 def on_message(client, userdata, message): 
   global counter
   counter += 1
-  print(f"counter: {counter}")
+  client.publish('ece180d/test1', f"pong: {counter}", qos=1)
   print('Received message: "' + str(message.payload) + '" on topic "' + 
         message.topic + '" with QoS ' + str(message.qos))
 
