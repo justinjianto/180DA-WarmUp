@@ -7,6 +7,7 @@ def on_connect(client, userdata, flags, rc):
   # Subscribing in on_connect() means that if we lose the connection and
   # reconnect then subscriptions will be renewed.
   # client.subscribe("ece180d/test")
+  client.subscribe("ece180d/test1", qos=1)
 # The callback of the client when it disconnects. 
 def on_disconnect(client, userdata, rc): 
   if rc != 0: 
@@ -16,7 +17,6 @@ def on_disconnect(client, userdata, rc):
 # The default message callback. 
 # (won't be used if only publishing, but can still exist)
 def on_message(client, userdata, message): 
-#   print("eat my ass")
   print('Received message: "' + str(message.payload) + '" on topic "' + 
         message.topic + '" with QoS ' + str(message.qos))
 # 1. create a client instance. 
@@ -36,7 +36,9 @@ client.loop_start()
 # payload must be a string, bytearray, int, float or None.
 print('Publishing...')
 for i in range(10):  
-  client.publish('ece180d/test', float(np.random.random(1)), qos=1)
+  client.publish('ece180d/test', f"ping: {i}", qos=1)
+while True:
+  pass
 # 6. use disconnect() to disconnect from the broker. 
 client.loop_stop()
 client.disconnect()
